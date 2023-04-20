@@ -4,12 +4,14 @@ function random(x, y) {
     return Math.round(z);
   }
   random(10, 110);
+  //
   
   //Функция для проверки максимальной длины строки
   function MaxLine(str,maxlong) {
     return str.length<=maxlong;
   }
   MaxLine('Пример коментария',140);
+  //
 
   const INname=[
     'Кирилл',
