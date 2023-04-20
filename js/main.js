@@ -12,5 +12,3 @@ function random(x, y) {
   }
   MaxLine('Пример коментария',140);
   //
-
- 
