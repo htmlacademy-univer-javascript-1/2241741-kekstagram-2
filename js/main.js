@@ -46,4 +46,3 @@ function random(x, y) {
       }
     
     ));
-    
