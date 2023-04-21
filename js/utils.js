@@ -18,7 +18,6 @@ function random(x, y) {
     OriginalCommentIds.add(commentId);
     return commentId;
   };
-  const isEscapeKey = (evt) => evt.key === 'Escape';
   //
   export{random};
   export{MaxLine};
