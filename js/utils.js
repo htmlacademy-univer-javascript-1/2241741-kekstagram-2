@@ -1,24 +1,20 @@
-// Функция, возвращающая случайное целое число из переданного диапазона включительно
-function random(x, y) {
-    const z = x - 0.5 + Math.random() * (y - x + 1);
-    return Math.round(z);
+const checkMaxSymbol = (str, maxLength) => str.length <= maxLength;
+
+
+function getRandomNumber(min, max) {
+  if (min < max && min >= 0 && max >= 0) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
   }
-  //
-  
-  //Функция для проверки максимальной длины строки
-  function MaxLine(str,maxlong) {
-    return str.length<=maxlong;
+  if (min >= max) {
+    [min, max] = [max, min];
+    min = Math.ceil(min);
+    max = Math.floor(max);
   }
-  //
-  
-  //Функция для создания оригинального Id
-  const OriginalCommentIds=new Set;
-  const MadeCommentId=()=> {
-    const commentId=random(1,2 ** 20);
-    OriginalCommentIds.add(commentId);
-    return commentId;
-  };
-  //
-  export{random};
-  export{MaxLine};
-  export{MadeCommentId};
+  if (max < 0 || min < 0) {
+    throw new RangeError('Minimum and maximum values must be positive');
+  }
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+export {checkMaxSymbol, getRandomNumber};
