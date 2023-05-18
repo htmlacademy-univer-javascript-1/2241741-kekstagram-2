@@ -1,16 +1,19 @@
-const inputData = (onSuccess, onFail) => {
+import { showAlert } from './util.js';
+const filterPhotosContainer = document.querySelector('.img-filters ');
+const getData = (onSuccess) => {
   fetch('https://26.javascript.pages.academy/kekstagram/data')
     .then((response) => response.json())
     .then((photos) => {
       onSuccess(photos);
-    }).catch(() => {
-      onFail('Не удалось загрузить данные');
-    });
+      filterPhotosContainer.classList.remove('img-filters--inactive');
+    })
+    .catch(() => { showAlert('Ошибка загрузки данных');});
+
 };
 
-const outputData = (onSuccess, onFail, body) => {
+const sendData = (onSuccess,  onFail,  body) => {
   fetch(
-    'https://26.javascript.pages.academy/kekstagram',
+    ' https://26.javascript.pages.academy/kekstagram',
     {
       method: 'POST',
       body,
@@ -19,13 +22,15 @@ const outputData = (onSuccess, onFail, body) => {
     .then((response) => {
       if (response.ok) {
         onSuccess();
-      } else {
+      }
+      else {
         onFail('Не удалось отправить форму. Попробуйте ещё раз');
       }
     })
     .catch(() => {
       onFail('Не удалось отправить форму. Попробуйте ещё раз');
+
     });
 };
 
-export {inputData, outputData};
+export { getData, sendData};
