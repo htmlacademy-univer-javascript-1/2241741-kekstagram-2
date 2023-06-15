@@ -1,12 +1,13 @@
-import {showPhoto} from './photoMiniatures.js';
-import './NewPicture.js';
-import {inputData} from './api.js';
-import {indicateError} from './error.js';
-import {showFilters} from './filter.js';
-import './formValidation';
-import './download.js';
+import './form.js';
+import './scale.js';
+import './filter.js';
+import { createMiniatures } from './miniatures.js';
+import { getData } from './api.js';
+import './img-filter.js';
+import './avatar.js';
+import { sort } from './img-filter.js';
+getData((photos) => { createMiniatures(photos);
+  sort(photos);
+});
 
-inputData((pictures) => {
-  showPhoto(pictures);
-  showFilters(pictures);
-}, indicateError);
+
